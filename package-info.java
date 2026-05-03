@@ -1,1 +1,1 @@
-package com.example.spotdifference.controller;
+package com.example.spotdifference.repository;
