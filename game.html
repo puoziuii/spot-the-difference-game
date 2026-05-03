@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spot the Difference - Level <span th:text="${level}"></span></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <div class="level-info">
+                <span class="level-badge">🎯 Level <span th:text="${level}"></span></span>
+                <span class="game-number">🎮 Game <span th:text="${gameNumber}"></span>/3</span>
+                <span class="player-name">👤 <span th:text="${user.username}"></span></span>
+                <span class="score">⭐ Score: <span th:text="${user.totalScore}"></span></span>
+                <span class="round-score">💰 Round: <span th:text="${roundScore}"></span></span>
+            </div>
+            <div class="game-stats">
+                <div class="differences-found">
+                    🔍 Differences: <span id="foundCount" th:text="${foundDifferences}">0</span> / <span th:text="${totalDifferences}">0</span>
+                </div>
+                <div class="timer">
+                    ⏱️ Time: <span id="timer" th:text="${timeLimit}">60</span> sec
+                </div>
+            </div>
+        </div>
+        
+        <div class="images-container">
+            <div class="image-wrapper">
+                <h3>Image 1 - Reference</h3>
+                <div class="image-container">
+                    <img th:src="@{${game.image1Url}}" alt="Image 1" id="image1">
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <h3>Image 2 - Click on the differences!</h3>
+                <div class="image-container" style="position: relative;">
+                    <img th:src="@{${game.image2Url}}" alt="Image 2" id="image2" style="width: 100%; cursor: crosshair;">
+                    <canvas id="differenceCanvas" style="position: absolute; top: 0; left: 0; pointer-events: none;"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- زر Next Game (يظهر فقط عند اكتمال اللعبة) -->
+        <div id="nextGameContainer" style="text-align: center; margin-top: 20px;">
+            <button id="nextGameBtn" class="btn-next" style="display: none;" onclick="goToNextGame()">➡️ Next </button>
+        </div>
+        
+        <div id="messageArea" style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; display: none;"></div>
+        
+        <div class="logout-form">
+            <button onclick="resetGame()" class="btn-reset" style="background: #ff9800; color: white; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; margin-right: 10px;">🔄 Reset Game</button>
+            <form method="post" th:action="@{/logout}" style="display: inline;">
+                <button type="submit" class="logout-btn">🚪 Logout</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Hidden values for JavaScript -->
+    <input type="hidden" id="totalDifferences" th:value="${totalDifferences}">
+    <input type="hidden" id="timeLimit" th:value="${timeLimit}">
+    <input type="hidden" id="currentLevel" th:value="${level}">
+    <input type="hidden" id="currentGameNumber" th:value="${gameNumber}">
+    
+    <script th:src="@{/js/game.js}"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Victory! - Spot the Difference</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="win-container">
+        <div class="win-box">
+            <h1>🏆 VICTORY! 🏆</h1>
+            <h2>Congratulations, <span th:text="${username}"></span>!</h2>
+            <p class="final-score">Final Score: <span th:text="${score}"></span></p>
+            <p>You completed all 3 levels!</p>
+            <div class="win-buttons">
+                    <button onclick="window.location.href='/SpotTheDifference/game'" class="btn btn-primary">Play Again</button>                <form method="post" th:action="@{/logout}" style="display:inline">
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
