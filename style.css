@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Login/Register */
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.login-container h1 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #764ba2;
+}
+
+.error {
+    color: red;
+    margin: 10px 0;
+}
+
+/* Game page */
+.game-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.level-info {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.level-badge, .game-number, .player-name, .score, .round-score {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.level-badge {
+    background: #764ba2;
+    color: white;
+}
+
+.game-number {
+    background: #2196f3;
+    color: white;
+}
+
+.player-name {
+    background: #667eea;
+    color: white;
+}
+
+.score {
+    background: #ff9800;
+    color: white;
+}
+
+.round-score {
+    background: #4caf50;
+    color: white;
+}
+
+.game-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.differences-found, .timer {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+.differences-found {
+    color: #4caf50;
+}
+
+.timer {
+    color: #ff5722;
+}
+
+/* Images side by side - SOLUTION */
+.images-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.image-wrapper {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.image-wrapper h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#image2 {
+    cursor: crosshair;
+}
+
+.difference-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+/* Messages */
+.message {
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    animation: slideDown 0.3s ease;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #28a745;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #dc3545;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.logout-form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logout-btn {
+    width: auto;
+    padding: 10px 30px;
+    background: #dc3545;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .images-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .image-wrapper {
+        width: 100%;
+    }
+    
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .level-info, .game-stats {
+        justify-content: center;
+    }
+    .btn-next {
+    background: #4caf50;
+    color: white;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    animation: pulse 0.5s ease;
+}
+
+.btn-next:hover {
+    background: #45a049;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 2px solid #ffc107;
+}
+/* زر Next Game */
+.btn-next {
+    background: linear-gradient(135deg, #4caf50, #45a049);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    animation: pulse 0.5s ease;
+}
+
+.btn-next:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-next:active {
+    transform: scale(0.95);
+}
+
+/* زر Reset */
+.btn-reset {
+    background: #ff9800;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-reset:hover {
+    background: #e68900;
+    transform: translateY(-2px);
+}
+
+.logout-btn {
+    background: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.logout-form {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.message.warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 2px solid #ffc107;
+}
+}
