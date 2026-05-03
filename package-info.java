@@ -1,1 +1,1 @@
-package com.example.spotdifference.repository;
+package com.example.spotdifference.service;
